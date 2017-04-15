@@ -1,4 +1,7 @@
 package com.iravid.playjsoncats
+
+import cats.kernel.Eq
+import cats.kernel.instances.tuple._
 import org.scalacheck.{ Arbitrary, Gen, Cogen }
 import play.api.libs.json._
 
@@ -59,5 +62,40 @@ object Arbitraries {
       case o: JsObject  => Cogen.perturb(seed, o.fields)
       case JsNull       => Cogen.perturb(seed, ())
     }
+  }
+
+  /**
+    * Generate an approximation for function equality. Lifted from cats.
+    */
+  implicit def catsLawsEqForFn1[A, B](implicit A: Arbitrary[A], B: Eq[B]): Eq[A => B] = new Eq[A => B] {
+    val sampleCnt: Int = 50
+
+    def eqv(f: A => B, g: A => B): Boolean = {
+      val samples = List.fill(sampleCnt)(A.arbitrary.sample).collect{
+        case Some(a) => a
+        case None => sys.error("Could not generate arbitrary values to compare two functions")
+      }
+      samples.forall(s => B.eqv(f(s), g(s)) )
+    }
+  }
+
+  implicit def readsArbitrary[A: Arbitrary]: Arbitrary[Reads[A]] = Arbitrary(Arbitrary.arbitrary[JsValue => JsResult[A]].map(Reads(_)))
+  implicit def readsEq[A: Eq]: Eq[Reads[A]] = Eq.by { reads =>
+    reads.reads _
+  }
+
+  implicit def writesArb[A: Cogen]: Arbitrary[Writes[A]] = Arbitrary(Arbitrary.arbitrary[A => JsValue].map(Writes(_)))
+  implicit def writesEq[A: Arbitrary]: Eq[Writes[A]] = Eq.by { writes =>
+    writes.writes _
+  }
+
+  implicit def formatArb[A: Cogen: Arbitrary]: Arbitrary[Format[A]] = Arbitrary {
+    for {
+      reads <- Arbitrary.arbitrary[Reads[A]]
+      writes <- Arbitrary.arbitrary[Writes[A]]
+    } yield Format(reads, writes)
+  }
+  implicit def formatEq[A: Eq: Arbitrary]: Eq[Format[A]] = Eq.by { format =>
+    (format.reads _, format.writes _)
   }
 }
