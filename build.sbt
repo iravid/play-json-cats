@@ -2,7 +2,7 @@ lazy val root = (project in file("."))
   .settings(
     organization := "com.iravid",
     name := "play-json-cats",
-    version := "0.1-SNAPSHOT",
+    version := "0.1",
     scalaVersion := "2.11.8",
     scalacOptions ++= Seq(
       "-deprecation",
@@ -25,5 +25,8 @@ lazy val root = (project in file("."))
       "com.typesafe.play" %% "play-json" % "2.5.10",
       "org.typelevel"     %% "cats-laws" % "0.9.0" % "test",
       "org.scalatest"     %% "scalatest" % "3.0.1" % "test"
-    )
+    ),
+    bintrayReleaseOnPublish in ThisBuild := false,
+    licenses += ("Apache-2.0", url("https://opensource.org/licenses/Apache-2.0")),
+    bintrayPackageLabels := Seq("play-json", "cats", "json")
   )
