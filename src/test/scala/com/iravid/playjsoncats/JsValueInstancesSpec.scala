@@ -1,6 +1,6 @@
 package com.iravid.playjsoncats
 
-import cats.kernel.laws.GroupLaws
+import cats.kernel.laws.discipline.MonoidTests
 import org.scalacheck.{ Arbitrary, Gen }
 import org.scalatest.FunSuite
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
@@ -17,8 +17,8 @@ import JsArrayInstances._
 class JsValueInstancesSpec extends FunSuite with Discipline with GeneratorDrivenPropertyChecks {
   import Arbitraries._
 
-  checkAll("JsObject", GroupLaws[JsObject].monoid)
-  checkAll("JsArray", GroupLaws[JsArray].monoid)
+  checkAll("JsObject", MonoidTests[JsObject].monoid)
+  checkAll("JsArray", MonoidTests[JsArray].monoid)
 
   {
     Monoid[JsObject]

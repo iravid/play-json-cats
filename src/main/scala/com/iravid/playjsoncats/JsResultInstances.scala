@@ -1,7 +1,7 @@
 package com.iravid.playjsoncats
 
 import cats.kernel.{ Eq, Monoid, Semigroup }
-import cats.{ Applicative, ApplicativeError, Eval, Monad, MonadError, MonadFilter, TraverseFilter }
+import cats.{ Applicative, ApplicativeError, Eval, Monad, MonadError, Traverse }
 import play.api.libs.json.{ JsError, JsResult, JsSuccess }
 
 import scala.annotation.tailrec
@@ -71,13 +71,7 @@ private[playjsoncats] sealed trait JsResultInstances1 extends JsResultInstances2
 }
 
 private[playjsoncats] sealed trait JsResultInstances2 {
-  implicit val jsResultTraverseFilter: TraverseFilter[JsResult] = new TraverseFilter[JsResult] {
-    def traverseFilter[G[_]: Applicative, A, B](fa: JsResult[A])(f: A => G[Option[B]]): G[JsResult[B]] =
-      fa match {
-        case e: JsError      => Applicative[G].pure(e)
-        case JsSuccess(a, p) => Applicative[G].map(f(a))(_.fold[JsResult[B]](JsError())(JsSuccess(_, p)))
-      }
-
+  implicit val jsResultTraverse: Traverse[JsResult] = new Traverse[JsResult] {
     override def traverse[G[_]: Applicative, A, B](fa: JsResult[A])(f: A => G[B]): G[JsResult[B]] =
       fa match {
         case e: JsError         => Applicative[G].pure(e)

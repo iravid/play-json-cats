@@ -2,8 +2,8 @@ lazy val root = (project in file("."))
   .settings(
     organization := "com.iravid",
     name := "play-json-cats",
-    version := "0.2",
-    scalaVersion := "2.11.8",
+    version := "0.3",
+    scalaVersion := "2.11.12",
     scalacOptions ++= Seq(
       "-deprecation",
       "-encoding", "UTF-8",
@@ -21,10 +21,10 @@ lazy val root = (project in file("."))
       "-Xfuture"
     ),
     libraryDependencies ++= Seq(
-      "org.typelevel"     %% "cats"      % "0.9.0",
-      "com.typesafe.play" %% "play-json" % "2.5.10",
-      "org.typelevel"     %% "cats-laws" % "0.9.0" % "test",
-      "org.scalatest"     %% "scalatest" % "3.0.1" % "test"
+      "org.typelevel"     %% "cats-core"      % "1.0.1",
+      "com.typesafe.play" %% "play-json" % "2.6.8",
+      "org.typelevel"     %% "cats-laws" % "1.0.1" % "test",
+      "org.scalatest"     %% "scalatest" % "3.0.4" % "test"
     ),
     licenses += ("Apache-2.0", url("https://opensource.org/licenses/Apache-2.0")),
     homepage := Some(url("https://github.com/iravid/play-json-cats")),
