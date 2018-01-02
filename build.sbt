@@ -4,6 +4,7 @@ lazy val root = (project in file("."))
     name := "play-json-cats",
     version := "0.3",
     scalaVersion := "2.11.12",
+    crossScalaVersions := Seq("2.11.12", "2.12.4"),
     scalacOptions ++= Seq(
       "-deprecation",
       "-encoding", "UTF-8",

@@ -4,6 +4,7 @@ jdk:
 - oraclejdk8
 scala:
 - 2.11.12
+- 2.12.4
 cache:
   directories:
   - $HOME/.ivy2/cache
