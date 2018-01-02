@@ -2,7 +2,7 @@ lazy val root = (project in file("."))
   .settings(
     organization := "com.iravid",
     name := "play-json-cats",
-    version := "0.3",
+    version := "1.0.0",
     scalaVersion := "2.11.12",
     crossScalaVersions := Seq("2.11.12", "2.12.4"),
     scalacOptions ++= Seq(
@@ -22,7 +22,7 @@ lazy val root = (project in file("."))
       "-Xfuture"
     ),
     libraryDependencies ++= Seq(
-      "org.typelevel"     %% "cats-core"      % "1.0.1",
+      "org.typelevel"     %% "cats-core" % "1.0.1",
       "com.typesafe.play" %% "play-json" % "2.6.8",
       "org.typelevel"     %% "cats-laws" % "1.0.1" % "test",
       "org.scalatest"     %% "scalatest" % "3.0.4" % "test"
