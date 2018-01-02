@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/iravid/play-json-cats.svg?branch=master)](https://travis-ci.org/iravid/play-json-cats)
+[![Build Status](https://travis-ci.org/iravid/play-json-cats.svg?branch=master)](https://travis-ci.org/iravid/play-json-cats) [![Download](https://api.bintray.com/packages/iravid/maven/play-json-cats/images/download.svg)](https://bintray.com/iravid/maven/play-json-cats/_latestVersion)
 
 # play-json-cats
 
