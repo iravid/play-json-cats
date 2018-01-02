@@ -1,6 +1,6 @@
 package com.iravid.playjsoncats
 
-import cats.{ Applicative, ApplicativeError, Eval, Monad }
+import cats.{ Applicative, Monad }
 import cats.{ Contravariant, Invariant }
 import play.api.libs.json.{ Format, JsError, JsResult, JsSuccess, JsValue, Reads, Writes }
 
