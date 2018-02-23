@@ -2,10 +2,18 @@ platform: linux
 
 image_resource:
   type: docker-image
-  source: {repository: hseeberger/scala-sbt}
+  source:
+    repository: hseeberger/scala-sbt
 
 inputs:
 - name: play-json-cats
 
 run:
   path: ./play-json-cats/build.sh
+
+caches:
+  - .ivy2/cache
+  - .sbt/boot/
+  - play-json-cats/target
+  - play-json-cats/project/target
+
