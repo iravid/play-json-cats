@@ -12,8 +12,8 @@ run:
   path: ./play-json-cats/build.sh
 
 caches:
-  - path: .ivy2/cache
-  - path: .sbt/boot/
+  - path: ../../../root/.ivy2/cache
+  - path: ../../../root/.sbt/boot/
   - path: play-json-cats/target
   - path: play-json-cats/project/target
 
