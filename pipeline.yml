@@ -9,5 +9,6 @@ jobs:
 - name: compile
   plan:
   - get: play-json-cats
+    trigger: true
   - task: tests
     file: play-json-cats/build.yml
