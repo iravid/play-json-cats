@@ -1,0 +1,13 @@
+resources:
+- name: play-json-cats
+  type: git
+  source:
+    uri: https://github.com/iravid/play-json-cats
+    branch: concourse
+
+jobs:
+- name: compile
+  plan:
+  - get: play-json-cats
+  - task: tests
+    file: play-json-cats/build.yml
