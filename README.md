@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/iravid/play-json-cats.svg?branch=master)](https://travis-ci.org/iravid/play-json-cats) [![Download](https://api.bintray.com/packages/iravid/maven/play-json-cats/images/download.svg)](https://bintray.com/iravid/maven/play-json-cats/_latestVersion)
+[![Build Status](https://travis-ci.org/iravid/play-json-cats.svg?branch=master)](https://travis-ci.org/iravid/play-json-cats)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.iravid/play-json-cats_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.iravid/play-json-cats_2.12)
 
 # play-json-cats
 
@@ -6,9 +7,7 @@
 
 ## Adding as a dependency to your project
 
-You'll need to add JCenter to your resolvers. In your `build.sbt`:
 ```scala
-resolvers += Resolver.jcenterRepo
 libraryDependencies += "com.iravid" %% "play-json-cats" % 1.0.0
 ```
 

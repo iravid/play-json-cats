@@ -43,8 +43,6 @@ lazy val root = (project in file("."))
         url = url("https://github.com/iravid")
       )
     ),
-    bintrayReleaseOnPublish in ThisBuild := false,
-    bintrayPackageLabels := Seq("play-json", "cats", "json"),
-    scaladexKeywords in Scaladex := Seq("play-json", "cats", "json"),
-    credentials in Scaladex += Credentials(Path.userHome / ".ivy2" / ".scaladex.credentials")
+    publishMavenStyle := true,
+    publishTo := sonatypePublishTo.value
   )
