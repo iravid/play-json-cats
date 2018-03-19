@@ -22,7 +22,7 @@ lazy val root = (project in file("."))
       "-Xfuture"
     ),
     libraryDependencies ++= Seq(
-      "org.typelevel"     %% "cats-core" % "1.0.1",
+      "org.typelevel"     %% "cats-core" % "1.1.0",
       "com.typesafe.play" %% "play-json" % "2.6.8",
       "org.typelevel"     %% "cats-laws" % "1.0.1" % "test",
       "org.scalatest"     %% "scalatest" % "3.0.4" % "test"
