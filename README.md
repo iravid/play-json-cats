@@ -8,7 +8,7 @@
 ## Adding as a dependency to your project
 
 ```scala
-libraryDependencies += "com.iravid" %% "play-json-cats" % 1.0.0
+libraryDependencies += "com.iravid" %% "play-json-cats" % 1.1.0
 ```
 
 `play-json-cats` is cross-published for Scala 2.11 and 2.12.
