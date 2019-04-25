@@ -11,7 +11,8 @@ object JsResultInstances extends JsResultInstances
 trait JsResultInstances extends JsResultInstances0 with JsResultInstances1
 
 private[playjsoncats] sealed trait JsResultInstances0 {
-  implicit val jsResultApplicativeAndApplicativeError: Applicative[JsResult] with ApplicativeError[JsResult, JsError] =
+  implicit val jsResultApplicativeAndApplicativeError
+    : Applicative[JsResult] with ApplicativeError[JsResult, JsError] =
     new Applicative[JsResult] with ApplicativeError[JsResult, JsError] {
       def pure[A](x: A) = JsSuccess(x)
 
@@ -74,8 +75,8 @@ private[playjsoncats] sealed trait JsResultInstances2 {
   implicit val jsResultTraverse: Traverse[JsResult] = new Traverse[JsResult] {
     override def traverse[G[_]: Applicative, A, B](fa: JsResult[A])(f: A => G[B]): G[JsResult[B]] =
       fa match {
-        case e: JsError         => Applicative[G].pure(e)
-        case JsSuccess(a, p)    => Applicative[G].map(f(a))(JsSuccess(_, p))
+        case e: JsError      => Applicative[G].pure(e)
+        case JsSuccess(a, p) => Applicative[G].map(f(a))(JsSuccess(_, p))
       }
 
     def foldLeft[A, B](fa: JsResult[A], b: B)(f: (B, A) => B): B =

@@ -1,17 +1,16 @@
 package com.iravid.playjsoncats
 
 import org.scalatest.FunSuite
-import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.typelevel.discipline.scalatest.Discipline
-
-import cats.{ Functor, Applicative, ApplicativeError, Monad, MonadError, Traverse, Monoid }
+import cats.{ Applicative, ApplicativeError, Functor, Monad, MonadError, Monoid, Traverse }
 import cats.kernel.laws.discipline.MonoidTests
 import cats.implicits._
 import cats.laws.discipline._
-
+import org.scalatestplus.scalacheck.ScalaCheckDrivenPropertyChecks
 import play.api.libs.json.{ JsError, JsResult }
 
-class JsResultInstancesSpec extends FunSuite with Discipline with GeneratorDrivenPropertyChecks with JsResultInstances {
+class JsResultInstancesSpec
+    extends FunSuite with Discipline with ScalaCheckDrivenPropertyChecks with JsResultInstances {
   import Arbitraries._
 
   implicit val iso = SemigroupalTests.Isomorphisms.invariant[JsResult]
